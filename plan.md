@@ -5,7 +5,7 @@
 - Create room id DONE
 - Add ability for video streaming DONE
 - Add styling DONE
-- Add chatbox
+- Add chatbox DONE
 - Add mute button
 - Add stop video button
 - Add whiteboard option
