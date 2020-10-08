@@ -6,6 +6,6 @@
 - Add ability for video streaming DONE
 - Add styling DONE
 - Add chatbox DONE
-- Add mute button
-- Add stop video button
+- Add mute button DONE
+- Add stop video button DONE
 - Add whiteboard option

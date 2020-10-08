@@ -14,7 +14,7 @@ let myVideoStream
 
 navigator.mediaDevices.getUserMedia({
     video: true,
-    audio: false
+    audio: true
 }).then(stream => {
     myVideoStream = stream;
     addVideoStream(myVideo, stream);
@@ -68,4 +68,59 @@ const addVideoStream = (video, stream) => {
 const scrollToBottom = () => {
     var d = $('.main_chat_window');
     d.scrollTop(d.prop("scrollHeight"));
+}
+
+const muteUnmute = () => {
+
+    const setMuteButton = () => {
+        const html = `
+            <i class= "fas fa-microphone"></i>
+            <span>Mute</span>
+        `
+        document.querySelector('.main_mute_button').innerHTML = html;
+    }
+    const setUnmuteButton = () => {
+        const html = `
+            <i class="unmute fas fa-microphone-slash"></i>
+            <span>Unmute</span>
+        `
+        document.querySelector('.main_mute_button').innerHTML = html;
+    }
+
+    const enabled = myVideoStream.getAudioTracks()[0].enabled;
+    if (enabled) {
+        myVideoStream.getAudioTracks()[0].enabled = false;
+        setUnmuteButton();
+    } else {
+        setMuteButton();
+        myVideoStream.getAudioTracks()[0].enabled = true;
+
+    }
+}
+
+const playStop = () => {
+
+    const setStopVideo = () => {
+        const html = `
+        <i class="fas fa-video"></i>
+        <span>Stop Video</span>
+        `
+        document.querySelector('.main_video_button').innerHTML = html;
+    }
+    const setPlayVideo = () => {
+        const html = `
+        <i class="stop fas fa-video-slash"></i>
+        <span>Play Video</span>
+        `
+        document.querySelector('.main_video_button').innerHTML = html;
+    }
+
+    const enabled = myVideoStream.getVideoTracks()[0].enabled;
+    if (enabled) {
+        myVideoStream.getVideoTracks()[0].enabled = false;
+        setPlayVideo();
+    } else {
+        setStopVideo();
+        myVideoStream.getVideoTracks()[0].enabled = true
+    }
 }
